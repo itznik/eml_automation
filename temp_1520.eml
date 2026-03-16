@@ -1,0 +1,1424 @@
+Delivered-To: variyanikunj84@gmail.com
+Received: by 2002:ac2:5610:0:0:0:0:0 with SMTP id v16csp2603933lfd;
+        Sun, 25 Jul 2021 14:06:13 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJwkzx2wxldxMr5JXS8yxNsMR+4mTjnQwy6LvocEex6jFUrru6pMJy5AV9yvJn9o13eqQcjE
+X-Received: by 2002:a02:cc4e:: with SMTP id i14mr13505541jaq.125.1627247173454;
+        Sun, 25 Jul 2021 14:06:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1627247173; cv=none;
+        d=google.com; s=arc-20160816;
+        b=oe/HwIJGfNH2goEG7a5kML3LTAYEDIA/yXai5y7Gj0lrs64NVuBzixV/Jkle3fe4hh
+         /O8RJE/jl4yhqyGn2r9gXI2ENndJ7+IEBDSxw31eYwaVHGR535RRsED+us5wQyS8z+T0
+         a6L/lPqVxjyWSlERcBWuhb2lx/K6XTk57qbdCxcENUzvNFQpWELaOi5ShqY2Jw6bE9nx
+         YR66kJRcF/JDj6VtfaBDpHlfni0g8coq1Cs5TqCXRs2L5hZk8Sa6NoveMjbPgflVecmW
+         SeLXRIywczozgZdkqzJuIdwMBW5RSBslxVwWeVvMBavosf3OFXnAA3U+xWs/u3iwzOVD
+         pNrQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=list-unsubscribe:subject:message-id:to:reply-to:mime-version:from
+         :date:dkim-signature:dkim-signature;
+        bh=GVDqGQ2Pezf72qyMtwuhIT1+qc0BkuJB6JhxVLSBdBc=;
+        b=FindoGtLm57jcWMv5TynbgxZTWzVdnWG27O7T47wPHPnh1tLmhwycn7A5hXfFLC17b
+         Rle8ONp7YEQQgdLuVtARmR4dIXy9hmxJiq0e5AKAErY0hk9guAUBuCiZBaMbur83Lfkj
+         +MDkwJgohU8iTNgIKjFUEpoEH2O6hhyoUg/MxcL5FQEcmNQ9eCozGGKppEsXpFa3Hjgl
+         n5phCpK9CsjKePQcFkTBKQ5THxM2TfJq6Z/Rbjy32qU+5L9HCgB2nQ7zBtg3SedJacUe
+         44NT3ybyOS3yNe/2T3nThBxwS00tGoC/cwr0jO1iEEoCi2rdC8z1s6hArjBpFHao6g9h
+         Kp+g==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@skillshare.com header.s=smtpapi header.b=cKZQQ0Zp;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=x8Z3Wzv8;
+       spf=pass (google.com: domain of bounces+2265514-4fcb-variyanikunj84=gmail.com@email.skillshare.com designates 50.31.35.111 as permitted sender) smtp.mailfrom="bounces+2265514-4fcb-variyanikunj84=gmail.com@email.skillshare.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=skillshare.com
+Return-Path: <bounces+2265514-4fcb-variyanikunj84=gmail.com@email.skillshare.com>
+Received: from pnkfnpsf.outbound-mail.sendgrid.net ([50.31.35.111])
+        by mx.google.com with ESMTPS id h2si41741140ils.86.2021.07.25.14.06.12
+        for <variyanikunj84@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 25 Jul 2021 14:06:13 -0700 (PDT)
+Received-SPF: pass (google.com: domain of bounces+2265514-4fcb-variyanikunj84=gmail.com@email.skillshare.com designates 50.31.35.111 as permitted sender) client-ip=50.31.35.111;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@skillshare.com header.s=smtpapi header.b=cKZQQ0Zp;
+       dkim=pass header.i=@sendgrid.info header.s=smtpapi header.b=x8Z3Wzv8;
+       spf=pass (google.com: domain of bounces+2265514-4fcb-variyanikunj84=gmail.com@email.skillshare.com designates 50.31.35.111 as permitted sender) smtp.mailfrom="bounces+2265514-4fcb-variyanikunj84=gmail.com@email.skillshare.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=skillshare.com
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; 
+	d=skillshare.com; 
+	h=content-type:from:mime-version:reply-to:to:subject:list-unsubscribe; 
+	s=smtpapi; bh=GVDqGQ2Pezf72qyMtwuhIT1+qc0BkuJB6JhxVLSBdBc=; b=cK
+	ZQQ0ZpvNoQf9esw+bCUtcyp5pkPKIskEmoz6kOlM2cgsCyAtAZDyemCuQh0WMVU3
+	Thj/LU5abAXQrtvQy3N98bLRXkiF3R0PVfkARrlef4tcNGbbxOjwe6w8XBUikwsx
+	1Y641fNB4DJvcpPmsNeBhVafC684QsVRjwFHBb0gE=
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; 
+	d=sendgrid.info; 
+	h=content-type:from:mime-version:reply-to:to:subject:list-unsubscribe:x-feedback-id; 
+	s=smtpapi; bh=GVDqGQ2Pezf72qyMtwuhIT1+qc0BkuJB6JhxVLSBdBc=; b=x8
+	Z3Wzv85IQ0blF2kRgJ+s2DpGwkxNRBvdW/2obtMnNrZZnavgC3PF0+oUydXoiJYj
+	UaeIdRp3AvFQ4CFcYb9uG+sDWyPYgl/d/xdbrlIinqFikBRaU7RarBZhXIY4yJ7H
+	VYH8VhekTJYc2iVOYavpdF5roPRRueocU3P/wIrhI=
+Received: by filter2372p1mdw1.sendgrid.net with SMTP id filter2372p1mdw1-14844-60FDD243-6
+        2021-07-25 21:06:11.47811177 +0000 UTC m=+2084468.258024810
+Received: from MjI2NTUxNA (unknown)
+	by geopod-ismtpd-5-0 (SG) with HTTP id uK_CC5RxSj621gY9cbZmSg
+	Sun, 25 Jul 2021 21:06:11.374 +0000 (UTC)
+Content-Type: multipart/alternative; boundary=d67752cec15769cc96dc0d9be226b6c31f1625833f0a554e5c095714cea2
+Date: Sun, 25 Jul 2021 21:06:11 +0000 (UTC)
+From: "Skillshare" <hello@skillshare.com>
+Mime-Version: 1.0
+Reply-to: help@skillshare.com
+To: "Lucifer Morningstar" <variyanikunj84@gmail.com>
+Message-ID: <uK_CC5RxSj621gY9cbZmSg@geopod-ismtpd-5-0>
+Subject: We're all creative (especially you, Lucifer)
+X-campaignid: 3b442cbe-8e38-4972-afd0-bd9d40978047
+List-Unsubscribe: https://click.skillshare.com/customer/email_preferences?uid=42c7a068-ecd7-4769-9dc4-80d8a64be930&mid=30e5ae34-5f25-47df-9d64-6607ec0220d2&eid=ad8116ed-561a-4894-8624-423e9cdcc918&bsft_ek=2021-07-25T14%3A01%3A27Z&bsft_aaid=d5edc627-0f6f-46e0-b492-6ae0d9cbe64a
+X-SG-EID: eqG8c/CFuueR3QWSW9PC7Jcos0SfMIOxrcu7+N+TsgBi0S+oWUmfUo0//mGpEzjPyqQFFBxIOEwEcy
+ L2PpQ+49CipkX+vNSVE8BES4lZ4U00XRqubfwllNRiKFA03352vCMQAGwn4fseeOQsculuC1gdV/Ke
+ ygx0R0iNzFmIaVsaDoG3alzX8GJy3Wa+ny3k6g9sL+KJ71f9VwzNcqqV7/UR71tXQhPGy5CdZDO3L7
+ U=
+X-SG-ID: soKmfNOQeekWp4ucEVUIOJ+bbemLqR9/Fd4HN3IgdQnH2uK3xxq5BRiw8K76LcdKsMoK89KpzFXfbO
+ DM8edge7WoQJHUwm6G6+bLuCqgiwDXWnlHRlyi/t9/v9IRqkBaE+GczkjAP1cu2NkP5nrczFZUW0RD
+ bnuHI6hO0JQnIgpXjv6JTa3u30LFfNBXN8nXIz7JEZoLrbdEBX7aWCiyBIa6lKO7T1viRVTeIpnN0x
+ iw6yS/GHAeqmKpj1RQoAVN+kkXucQWx1MI8i2zwr0mSASkPuICHmaXlTQK6wRLjuDlYQA+GzEYaerq
+ ESrQYvR6A+52XnE4um4n4jqbxXfTVbq8qAzxxVKJztHYgerNm46kvFwEUbcQuCyYUI+bphATTdIuvR
+ gYyhGVCzQfiuAC01p5sANtIxNAPLrMkJSt00TtZy3a88E+ANao21S5AKOGXMWEpdjz2BoyzJrDy2p2
+ tW8U7WsqRBJdTPZ/HWDFXJhgygdW1rWpJsCh5MnmEFNXLVuioROfTsx2quaqR44aRbwpy5zMl4DDVn
+ nK0PQpjub8P+M5fCs0rSIlVjoJGLeFcvq+WmEle54DjZJxUoNiAt714rh9Cy3k4jEq+V08ysIWoZKk
+ ky5bYwwZd8ZGxcx04KqDp6IViFArwxnLHYYJi5oY5jdFEET/dioVV/ZaM/+FbPA1YPl6DRC7hPZVyM
+ LCSm/lQa66MXXmrpWobqaJHVytfCGn6v77L0ONTL5zb4c=
+X-Entity-ID: KRQA7VBaHP1fKgxbimiGtw==
+X-Feedback-ID: 2265514:9lWpHGwKgSIE9lvcLHCEeKvWdm1UqbrfcPH0ocdPrbo=:5we923+/7F3YP0EZlhw3tVbhaI2xBScrmSqGIt5Ut3YIttEce4NEHGI4tk1bQHpB:SG
+
+--d67752cec15769cc96dc0d9be226b6c31f1625833f0a554e5c095714cea2
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Mime-Version: 1.0
+
+Explore recommended classes and more to set your creativity free.
+=E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=
+=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=8C =E2=80=
+=8C =E2=80=8C =E2=80=8C =E2=80=8C
+
+https://click.skillshare.com/z/gqan86brx?uid=3D42c7a068-ecd7-4769-9dc4-80d8=
+a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&bsft_ek=3D2021-07-25T14=
+%3A01%3A27Z&bsft_mime_type=3Dtext&bsft_tv=3D10&bsft_lx=3D1
+
+[View in Browser](https://click.skillshare.com/email_browser_view?uid=3D42c=
+7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d=
+2&eid=3Dad8116ed-561a-4894-8624-423e9cdcc918&bsft_ek=3D2021-07-25T14%3A01%3=
+A27Z&bsft_aaid=3Dd5edc627-0f6f-46e0-b492-6ae0d9cbe64a&bsft_mime_type=3Dtext=
+&bsft_tv=3D10&bsft_lx=3D2)
+
+If you=E2=80=99re human, you=E2=80=99re creative.
+We=E2=80=99re all creative. And when we take that creativity and set it fre=
+e, express it, and share it with one another, we=E2=80=99re all a little mo=
+re human. See what you can discover with Skillshare Membership.
+
+[Get Creative](https://click.skillshare.com/z/k230i7pbs?uid=3D42c7a068-ecd7=
+-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&bsft_ek=
+=3D2021-07-25T14%3A01%3A27Z&bsft_mime_type=3Dtext&bsft_tv=3D10&bsft_lx=3D3)
+[product.title](https://click.skillshare.com/z/wxbclwmug?uid=3D42c7a068-ecd=
+7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&bsft_ek=
+=3D2021-07-25T14%3A01%3A27Z&bsft_mime_type=3Dtext&bsft_tv=3D10&bsft_lx=3D4)
+
+Top picks for you.
+
+[Adobe Illustrator CC =E2=80=93 Essentials Training](https://click.skillsha=
+re.com/z/oo57fw7pv?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae3=
+4-5f25-47df-9d64-6607ec0220d2&bsft_pp=3D1&bsft_ek=3D2021-07-25T14%3A01%3A27=
+Z&bsft_mime_type=3Dtext&bsft_tv=3D10&bsft_lx=3D5)
+Adobe Illustrator CC =E2=80=93 Essentials Training
+
+Daniel Scott
+
+[Learn More](https://click.skillshare.com/z/oo57fw7pv?uid=3D42c7a068-ecd7-4=
+769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&bsft_pp=3D=
+1&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mime_type=3Dtext&bsft_tv=3D10&bsf=
+t_lx=3D6)
+
+[Discovering Success: 7 Exercises to Uncover Your Purpose, Passion & Path](=
+https://click.skillshare.com/z/hmdmb96z8?uid=3D42c7a068-ecd7-4769-9dc4-80d8=
+a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&bsft_pp=3D2&bsft_ek=3D2=
+021-07-25T14%3A01%3A27Z&bsft_mime_type=3Dtext&bsft_tv=3D10&bsft_lx=3D7)
+Discovering Success: 7 Exercises to Uncover Your Purpose, Passion & Path
+
+Emma Gannon
+
+[Learn More](https://click.skillshare.com/z/hmdmb96z8?uid=3D42c7a068-ecd7-4=
+769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&bsft_pp=3D=
+2&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mime_type=3Dtext&bsft_tv=3D10&bsf=
+t_lx=3D8)
+
+[Art Journaling for Self-Care: 3 Exercises for Reflection and Growth](https=
+://click.skillshare.com/z/3avdzmflj?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be=
+930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&bsft_pp=3D3&bsft_ek=3D2021-0=
+7-25T14%3A01%3A27Z&bsft_mime_type=3Dtext&bsft_tv=3D10&bsft_lx=3D9)
+Art Journaling for Self-Care: 3 Exercises for Reflection and Growth
+
+Amanda Rach Lee
+
+[Learn More](https://click.skillshare.com/z/3avdzmflj?uid=3D42c7a068-ecd7-4=
+769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&bsft_pp=3D=
+3&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mime_type=3Dtext&bsft_tv=3D10&bsf=
+t_lx=3D10)
+
+[Browse More Classes](https://click.skillshare.com/z/ep89fjvna?uid=3D42c7a0=
+68-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&b=
+sft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mime_type=3Dtext&bsft_tv=3D10&bsft_l=
+x=3D11)
+
+BLOG
+How to Kindle Creative Inspiration
+
+[Learn More =E2=80=BA](https://click.skillshare.com/z/4q56x65yj?uid=3D42c7a=
+068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&=
+bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mime_type=3Dtext&bsft_tv=3D10&bsft_=
+lx=3D12)
+[Finding inspiration doesn't have to be heard. Read about tips and tricks t=
+o spark your creativity](https://click.skillshare.com/z/t9axfsq4g?uid=3D42c=
+7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d=
+2&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mime_type=3Dtext&bsft_tv=3D10&bsf=
+t_lx=3D13)
+
+Guess what, you=E2=80=99re creative.
+[Watch now to get inspired](https://click.skillshare.com/z/0uost6ck6?uid=3D=
+42c7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec02=
+20d2&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mime_type=3Dtext&bsft_tv=3D10&=
+bsft_lx=3D14)
+
+Check out Skillshare=E2=80=99s newest brand video about human creativity. A=
+nd remember, whether you=E2=80=99re a dabbler or a pro, a hobbyist or maste=
+r, you are creative.
+
+[Watch Now](https://click.skillshare.com/z/475krrjbr?uid=3D42c7a068-ecd7-47=
+69-9dc4-80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&bsft_ek=3D2=
+021-07-25T14%3A01%3A27Z&bsft_mime_type=3Dtext&bsft_tv=3D10&bsft_lx=3D15)
+[Watch now to get inspired](https://click.skillshare.com/z/6me6hkmab?uid=3D=
+42c7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec02=
+20d2&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mime_type=3Dtext&bsft_tv=3D10&=
+bsft_lx=3D16)
+
+Photo by Kevin Kim.
+
+https://click.skillshare.com/z/1atqz2d88?uid=3D42c7a068-ecd7-4769-9dc4-80d8=
+a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&bsft_ek=3D2021-07-25T14=
+%3A01%3A27Z&bsft_mime_type=3Dtext&bsft_tv=3D10&bsft_lx=3D17
+[Skillshare on Facebook](https://click.skillshare.com/z/9vp6apql4?uid=3D42c=
+7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d=
+2&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mime_type=3Dtext&bsft_tv=3D10&bsf=
+t_lx=3D18)	[Skillshare on Twitter](https://click.skillshare.com/z/r2de0silw=
+?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6=
+607ec0220d2&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mime_type=3Dtext&bsft_t=
+v=3D10&bsft_lx=3D19)	[Skillshare on Instagram](https://click.skillshare.com=
+/z/hp4x2t8vj?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25=
+-47df-9d64-6607ec0220d2&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mime_type=
+=3Dtext&bsft_tv=3D10&bsft_lx=3D20)
+[Appstore](https://click.skillshare.com/z/ev0rzzrbu?uid=3D42c7a068-ecd7-476=
+9-9dc4-80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&bsft_ek=3D20=
+21-07-25T14%3A01%3A27Z&bsft_mime_type=3Dtext&bsft_tv=3D10&bsft_lx=3D21)
+[Google Play](https://click.skillshare.com/z/honv9418w?uid=3D42c7a068-ecd7-=
+4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&bsft_ek=
+=3D2021-07-25T14%3A01%3A27Z&bsft_mime_type=3Dtext&bsft_tv=3D10&bsft_lx=3D22)
+215 Park Avenue South, 11th Floor
+New York, NY 10003
+
+Being creative can be exhausting.
+So if you need a break, [unsubscribe here.](https://click.skillshare.com/cu=
+stomer/email_preferences?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D3=
+0e5ae34-5f25-47df-9d64-6607ec0220d2&eid=3Dad8116ed-561a-4894-8624-423e9cdcc=
+918&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_aaid=3Dd5edc627-0f6f-46e0-b492-=
+6ae0d9cbe64a&bsft_mime_type=3Dtext&bsft_tv=3D10&bsft_lx=3D23)              =
+ []=
+
+--d67752cec15769cc96dc0d9be226b6c31f1625833f0a554e5c095714cea2
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset=UTF-8
+Mime-Version: 1.0
+
+<!DOCTYPE html>
+<html lang=3D"en" xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:sch=
+emas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:office">
+<head>
+    <meta charset=3D"utf-8"> <!-- utf-8 works for most cases -->
+    <meta name=3D"viewport" content=3D"width=3Ddevice-width"> <!-- Forcing =
+initial-scale shouldn't be necessary -->
+    <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge"> <!-- Use th=
+e latest (edge) version of IE rendering engine -->
+    <meta name=3D"x-apple-disable-message-reformatting">  <!-- Disable auto=
+-scale in iOS 10 Mail entirely -->
+    <meta name=3D"format-detection" content=3D"telephone=3Dno,address=3Dno,=
+email=3Dno,date=3Dno,url=3Dno"> <!-- Tell iOS not to automatically link cer=
+tain text strings. -->
+    <meta name=3D"color-scheme" content=3D"light">
+    <meta name=3D"supported-color-schemes" content=3D"light">
+
+    <title>Skillshare</title> <!-- The title tag shows in email notificatio=
+ns, like Android 4.4. -->
+
+    <!-- What it does: Makes background images in 72ppi Outlook render at c=
+orrect size. -->
+    <!--[if gte mso 9]>
+    <xml>
+        <o:OfficeDocumentSettings>
+            <o:AllowPNG/>
+            <o:PixelsPerInch>96</o:PixelsPerInch>
+        </o:OfficeDocumentSettings>
+    </xml>
+    <![endif]-->
+
+    <!-- Web Font / @font-face : BEGIN -->
+    <!-- Desktop Outlook chokes on web font references and defaults to Time=
+s New Roman, so we force a safe fallback font. -->
+    <!--[if mso]>
+        <style>
+            * {
+                font-family: sans-serif !important;
+            }
+        </style>
+    <![endif]-->
+
+    <!--[if !mso]><!-->
+        <style>
+            @font-face{
+                font-family:'KumlienPro';
+                font-style:normal;
+                font-weight: bold;
+                src:local('KumlienProBold'), local('KumlienProBold'), url('=
+https://static.skillshare.com/assets/css/libs/https/kumlien-pro/KumlienPro-=
+Bold.woff') format('woff');
+            }
+=20=20=20=20=20=20=20=20=20=20=20=20
+            @font-face{
+                font-family:'GTWalsheimPro';
+                font-style:normal;
+                font-weight: normal;
+                src:local('GTWalsheimPro'), local('GTWalsheimPro'), url('ht=
+tps://static.skillshare.com/assets/css/libs/https/gt-walsheim-pro/gt-walshe=
+im-pro-regular/GT-Walsheim-Pro-Regular.woff') format('woff');
+            }
+=20=20=20=20
+            @font-face{
+                font-family:'GTWalsheimPro';
+                font-style:normal;
+                font-weight:bold;
+                src:local('GTWalsheimProBold'), local('GTWalsheimProBold'),=
+ url('https://static.skillshare.com/assets/css/libs/https/gt-walsheim-pro/g=
+t-walsheim-pro-bold/GT-Walsheim-Pro-Bold.woff') format('woff');
+            }=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20
+        </style>
+    <!--<![endif]-->
+
+    <!-- Web Font / @font-face : END -->
+
+    <!-- CSS Reset : BEGIN -->
+    <style>
+        /* What it does: Tells the email client that only light styles are =
+provided but the client can transform them to dark. A duplicate of meta col=
+or-scheme meta tag above. */
+        :root {
+            Color-scheme: light;
+            supported-color-schemes: light;
+        }
+
+        /* What it does: Remove spaces around the email design added by som=
+e email clients. */
+        /* Beware: It can remove the padding / margin and add a background =
+color to the compose a reply window. */
+        html,
+        body {
+            margin: 0 auto !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+            font-family: sans-serif;
+        }
+
+        /* What it does: Stops email clients resizing small text. */
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        /* What it does: Centers email on Android 4.4 */
+        div[style*=3D"margin: 16px 0"] {
+            margin: 0 !important;
+        }
+
+        /* What it does: forces Samsung Android mail clients to use the ent=
+ire viewport */
+        #MessageViewBody, #MessageWebViewDiv{
+            width: 100% !important;
+        }
+
+        /* What it does: Stops Outlook from adding extra spacing to tables.=
+ */
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        /* What it does: Replaces default bold style. */
+        th {
+        	font-weight: normal;
+        }
+
+        /* What it does: Fixes webkit padding issue. */
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+            table-layout: fixed !important;
+            margin: 0 auto !important;
+        }
+
+        /* What it does: Prevents Windows 10 Mail from underlining links de=
+spite inline CSS. Styles for underlined links should be inline. */
+        a {
+            text-decoration: none;
+        }
+
+        /* What it does: Uses a better rendering method when resizing image=
+s in IE. */
+        img {
+            -ms-interpolation-mode:bicubic;
+        }
+
+        /* What it does: A work-around for email clients meddling in trigge=
+red links. */
+        a[x-apple-data-detectors],  /* iOS */
+        .unstyle-auto-detected-links a,
+        .aBn {
+            border-bottom: 0 !important;
+            cursor: default !important;
+            color: inherit !important;
+            text-decoration: none !important;
+            font-size: inherit !important;
+            font-family: inherit !important;
+            font-weight: inherit !important;
+            line-height: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from changing the text color in con=
+versation threads. */
+        .im {
+            color: inherit !important;
+        }
+
+        /* What it does: Prevents Gmail from displaying a download button o=
+n large, non-linked images. */
+        .a6S {
+           display: none !important;
+           opacity: 0.01 !important;
+		}
+		/* If the above doesn't work, add a .g-img class to any image in question=
+. */
+		img.g-img + div {
+		   display: none !important;
+		}
+
+        /* What it does: Removes right gutter in Gmail iOS app: https://git=
+hub.com/TedGoas/Cerberus/issues/89  */
+        /* Create one of these media queries for each additional viewport s=
+ize you'd like to fix */
+
+        /* iPhone 4, 4S, 5, 5S, 5C, and 5SE */
+        @media only screen and (min-device-width: 320px) and (max-device-wi=
+dth: 374px) {
+            u ~ div .email-container {
+                min-width: 320px !important;
+            }
+        }
+        /* iPhone 6, 6S, 7, 8, and X */
+        @media only screen and (min-device-width: 375px) and (max-device-wi=
+dth: 413px) {
+            u ~ div .email-container {
+                min-width: 375px !important;
+            }
+        }
+        /* iPhone 6+, 7+, and 8+ */
+        @media only screen and (min-device-width: 414px) {
+            u ~ div .email-container {
+                min-width: 414px !important;
+            }
+        }
+
+    </style>
+    <!-- CSS Reset : END -->
+
+    <!-- Progressive Enhancements : BEGIN -->
+    <style>
+
+    /* What it does: Hover styles for buttons */
+    .button-td,
+    .button-a {
+        transition: all 100ms ease-in;
+    }
+    .button-td-primary:hover,
+    .button-a-primary:hover {
+        background: #555555 !important;
+        border-color: #555555 !important;
+    }
+
+    /* Media Queries */
+    @media screen and (max-width: 700px) {
+
+        .email-container {
+            width: 100% !important;
+            margin: auto !important;
+        }
+
+        /* What it does: Forces table cells into full-width rows. */
+        .stack-column,
+        .stack-column-center {
+            display: block !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            direction: ltr !important;
+        }
+
+        .stack-column-alt {
+            display: block !important;
+            width: auto !important;
+        }
+
+
+        /* And center justify these ones. */
+        .stack-column-center {
+            text-align: center !important;
+            padding: 0 !important;
+        }
+
+        /* What it does: Generic utility class for centering. Useful for im=
+ages, buttons, and nested tables. */
+        .center-on-narrow {
+            text-align: center !important;
+            display: block !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+            float: none !important;
+        }
+        table.center-on-narrow {
+            display: inline-block !important;
+        }
+
+
+        .swap-direction {
+            direction: rtl !important;
+        }
+
+        .swap-border {
+            border-radius: 0px 4px 4px 0px !important;
+        }
+
+        .small-block-tag {
+            width: 60% !important;
+        }
+
+        .mobile-image {
+            width: 90px !important;
+            height: auto;
+        }
+
+        .block-container {
+            padding-left: 15px !important;
+            padding-right: 15px !important;
+        }
+
+        .section-wrap {
+            padding-left: 14px !important;
+            padding-right: 14px !important;
+        }
+
+        .section-wrap-12 {
+            padding-left: 12px !important;
+            padding-right: 12px !important;
+        }
+
+        .section-wrap-26 {
+            padding-left: 26px !important;
+            padding-right: 26px !important;
+        }
+
+        .section-wrap-42 {
+            padding-left: 42px !important;
+            padding-right: 42px !important;
+        }
+
+        .header-wrap {
+            padding-left: 28px !important;
+            padding-right: 28px !important;=09=09=09=09
+        }
+=20=20=20=20=20=20=20=20
+        .mobile-padding {
+            padding-left: 20px !important;
+            padding-right: 20px !important;
+        }
+
+        .mobile-headline-01 {
+            font-size: 52px !important;
+            line-height: 52px !important;
+        }
+
+        .r-img {
+            width: 100% !important;
+            max-width: 100% !important;
+        }
+
+    }
+    </style>
+    <!-- Progressive Enhancements : END -->
+
+</head>
+<!--
+	The email background color (#CCCCCC) is defined in three places:
+	1. body tag: for most email clients
+	2. center tag: for Gmail and Inbox mobile apps and web versions of Gmail, =
+GSuite, Inbox, Yahoo, AOL, Libero, Comcast, freenet, Mail.ru, Orange.fr
+	3. mso conditional: For Windows 10 Mail
+-->
+<body width=3D"100%" style=3D"margin: 0; padding: 0 !important; mso-line-he=
+ight-rule: exactly; background-color: #cccccc;">
+  <center role=3D"article" aria-roledescription=3D"email" lang=3D"en" style=
+=3D"width: 100%; background-color: #cccccc;">
+    <!--[if mso | IE]>
+    <table role=3D"presentation" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" width=3D"100%" style=3D"background-color: #cccccc;">
+    <tr>
+    <td>
+    <![endif]-->
+
+        <!-- Visually Hidden Preheader Text : BEGIN -->
+        <div style=3D"max-height:0; overflow:hidden; mso-hide:all;" aria-hi=
+dden=3D"true">
+        Explore recommended classes and more to set your creativity free.=
+=20=20=20=20
+        </div>
+        <!-- Visually Hidden Preheader Text : END -->
+
+        <!-- Create white space after the desired preview text so email cli=
+ents don=E2=80=99t pull other distracting text into the inbox preview. Exte=
+nd as necessary. -->
+        <!-- Preview Text Spacing Hack : BEGIN -->
+        <div style=3D"display: none; font-size: 1px; line-height: 1px; max-=
+height: 0px; max-width: 0px; opacity: 0; overflow: hidden; mso-hide: all; f=
+ont-family: sans-serif;">
+            &zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zw=
+nj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;=
+&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nb=
+sp;
+        </div>
+        <!-- Preview Text Spacing Hack : END -->
+
+        <!-- Email Body : BEGIN -->
+        <table align=3D"center" role=3D"presentation" cellspacing=3D"0" cel=
+lpadding=3D"0" border=3D"0" width=3D"700" bgcolor=3D"#3724CB" class=3D"emai=
+l-container" style=3D"background-color:#3724CB;">
+			<!-- HEADER : BEGIN -->
+			<tr>
+				<td width=3D"100%" align=3D"left" style=3D"background-color:#3724CB;pad=
+ding-top:17px;padding-left:50px;padding-bottom:23px;padding-right:50px;" cl=
+ass=3D"header-wrap">
+					<table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" width=3D"100%">
+						<tr>
+							<td align=3D"left"><a href=3D"https://click.skillshare.com/z/gqan86b=
+rx?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64=
+-6607ec0220d2&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mime_type=3Dhtml&bsft=
+_tv=3D10&bsft_lx=3D1"><img src=3D"https://cdn.getblueshift.com/pictures/441=
+94/content/skillshare-logo-wht.png" width=3D"90"></a></td>
+                            <td align=3D"right" valign=3D"bottom">
+                                <table cellpadding=3D"0" cellspacing=3D"0" =
+border=3D"0" width=3D"100%">
+                                    <tr>
+                                        <td align=3D"right" style=3D"font-f=
+amily:'GTWalsheimPro', Helvetica, Arial, sans-serif !important;font-weight:=
+bold;font-size:18px;color:#FFFFFF;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td align=3D"right"><a href=3D"http=
+s://click.skillshare.com/email_browser_view?uid=3D42c7a068-ecd7-4769-9dc4-8=
+0d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&eid=3Dad8116ed-561a-=
+4894-8624-423e9cdcc918&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_aaid=3Dd5edc=
+627-0f6f-46e0-b492-6ae0d9cbe64a&bsft_mime_type=3Dhtml&bsft_tv=3D10&bsft_lx=
+=3D2" style=3D"color:#00FF84;text-decoration: none;font-family:'GTWalsheimP=
+ro', Helvetica, Arial, sans-serif !important;font-size:10px;">View in Brows=
+er</a></td>
+                                    </tr>
+                                </table>
+                            </td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+            <!-- HEADER : END -->
+
+            <!-- 2 Col : BEGIN -->
+            <tr>
+                <td width=3D"100%" align=3D"center" style=3D"background-col=
+or:#3724CB;padding-bottom:18px;">
+                    <table role=3D"presentation" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%">
+                        <tr>
+                            <td width=3D"100%">
+                                <table role=3D"presentation" cellspacing=3D=
+"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                    <tr>
+                                        <!-- Column : BEGIN -->
+                                        <td valign=3D"top" width=3D"295" cl=
+ass=3D"stack-column-alt section-wrap-12" style=3D"padding-top:20px;padding-=
+left:53px;">
+                                            <table role=3D"presentation" ce=
+llspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                                <tr>
+                                                    <td align=3D"left" styl=
+e=3D"font-family:'GTWalsheimPro', Helvetica, Arial, sans-serif;font-weight:=
+bold;font-size:64px;line-height:54px;padding-bottom:15px;padding-top:20px;c=
+olor:#FFFFFF;" class=3D"mobile-headline-01">If you=E2=80=99re human, you=E2=
+=80=99re <span style=3D"color:#00FF84;">creative.</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td style=3D"font-size:=
+22px;line-height:32px;color:#FFFFFF;font-family:'GTWalsheimPro',Helvetica, =
+Arial, sans-serif;padding-top:8px;padding-bottom:18px;">=20
+                                                        We=E2=80=99re all c=
+reative. And when we take that creativity and set it free, express it, and =
+share it with one another, we=E2=80=99re all a little more human. See what =
+you can discover with Skillshare Membership.
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width=3D"100%" styl=
+e=3D"padding-bottom:30px;">
+                                                        <!-- Button : BEGIN=
+ -->
+                                                        <table align=3D"lef=
+t" role=3D"presentation" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+                                                            <tr>
+                                                                <td align=
+=3D"left" class=3D"button-td button-td-primary-bgreen" style=3D"border-radi=
+us: 4px;background-color:#00FF84;text-align: left;">
+                                                                    <a clas=
+s=3D"button-a button-a-primary-bgreen" href=3D"https://click.skillshare.com=
+/z/k230i7pbs?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25=
+-47df-9d64-6607ec0220d2&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mime_type=
+=3Dhtml&bsft_tv=3D10&bsft_lx=3D3" style=3D"border: 1px solid #00FF84; font-=
+family:'GTWalsheimPro',Helvetica, Arial, sans-serif;font-weight:bold;font-s=
+ize:18px; line-height: 18px; text-decoration: none; padding: 12px 16px; col=
+or: #002333; display: block; border-radius: 4px;text-align:center;">Get Cre=
+ative</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <!-- Button : END -=
+->
+                                                    </td>
+                                                </tr>=20=20=20
+                                            </table>
+                                        </td>
+                                        <!-- Column : END -->
+                                        <!-- Column : BEGIN -->
+                                        <td valign=3D"top" width=3D"352" cl=
+ass=3D"stack-column">
+                                            <table role=3D"presentation" ce=
+llspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                                <tr>
+                                                    <td width=3D"100%" alig=
+n=3D"right">
+                                                      <a href=3D"https://cl=
+ick.skillshare.com/z/wxbclwmug?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&m=
+id=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&bsft_ek=3D2021-07-25T14%3A01%3A27=
+Z&bsft_mime_type=3Dhtml&bsft_tv=3D10&bsft_lx=3D4">
+                                                        <img src=3D"https:/=
+/cdn.getblueshift.com/pictures/90074/content/q32021-campaign-hero-01.jpg" w=
+idth=3D"352" height=3D"auto" alt=3D"product.title" border=3D"0" style=3D"wi=
+dth:100%;max-width:352px;height:auto;display:block;" class=3D"r-img">
+                                                      </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <!-- Column : END -->
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                     </table>
+                </td>
+            </tr>
+            <!-- 2 Col: END -->
+
+            <!-- Col: BEGIN -->
+            <tr>
+                <td align=3D"center" style=3D"background-color:#3724CB;padd=
+ing-left:50px;padding-right:50px;" class=3D"section-wrap-26">
+                    <table role=3D"presentation" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%">
+                        <tr>
+                            <td align=3D"left" style=3D"font-family:'GTWals=
+heimPro', Helvetica, Arial, sans-serif;font-weight:bold;font-size:34px;line=
+-height:36px;color:#FFFFFF;padding-bottom:30px;" class=3D"custom04">Top pic=
+ks for you.</td>
+                        </tr>=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20
+                     </table>
+                </td>
+            </tr>
+            <tr>
+                <td width=3D"100%" align=3D"center" style=3D"background-col=
+or:#3724CB;padding-left:53px;padding-right:53px;" class=3D"section-wrap-26">
+                    <table role=3D"presentation" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%">
+                        <tr>
+                            <td>
+                                <table role=3D"presentation" cellspacing=3D=
+"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                    <tr>
+                                        <!-- Column : BEGIN -->
+                                        <td valign=3D"top" width=3D"295" cl=
+ass=3D"stack-column">
+                                            <table role=3D"presentation" ce=
+llspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                                <tr>
+                                                    <td width=3D"100%" styl=
+e=3D"padding-bottom:20px;">
+                                                      <a href=3D"https://cl=
+ick.skillshare.com/z/oo57fw7pv?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&m=
+id=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&bsft_pp=3D1&bsft_ek=3D2021-07-25T=
+14%3A01%3A27Z&bsft_mime_type=3Dhtml&bsft_tv=3D10&bsft_lx=3D5">
+                                                        <img src=3D"https:/=
+/static.skillshare.com/uploads/video/thumbnails/4023bea6e06722b14348c66a1c7=
+053a5/448-252" width=3D"295" height=3D"auto" alt=3D"Adobe Illustrator CC =
+=E2=80=93 Essentials Training" border=3D"0" style=3D"width:295px;max-width:=
+295px;height:auto;display:block;" class=3D"r-img">
+                                                      </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <!-- Column : END -->
+                                        <!-- Column : BEGIN -->
+                                        <td valign=3D"top" width=3D"220" cl=
+ass=3D"stack-column-alt mobile-padding">
+                                            <table role=3D"presentation" ce=
+llspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                                <tr>
+                                                    <td width=3D"100%" styl=
+e=3D"font-size:18px;line-height:20px;font-family:'GTWalsheimPro',Helvetica,=
+ Arial, sans-serif;font-weight:bold;color:#FFFFFF;padding-bottom:10px;">Ado=
+be Illustrator CC =E2=80=93 Essentials Training</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width=3D"100%">
+                                                        <table role=3D"pres=
+entation" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                                            <tr>
+                                                                <td style=
+=3D"font-size:16px;line-height:20px;font-family:'GTWalsheimPro',Helvetica, =
+Arial, sans-serif;color:#FFFFFF;padding-left:0px;">Daniel Scott</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width=3D"100%" styl=
+e=3D"padding-bottom:24px;padding-top:24px;">
+                                                        <!-- Button : BEGIN=
+ -->
+                                                        <table align=3D"lef=
+t" role=3D"presentation" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+                                                            <tr>
+                                                                <td align=
+=3D"left" class=3D"button-td button-td-primary-bgreen" style=3D"border-radi=
+us: 4px;text-align: left;">
+                                                                    <a clas=
+s=3D"button-a button-a-primary-bgreen" href=3D"https://click.skillshare.com=
+/z/oo57fw7pv?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25=
+-47df-9d64-6607ec0220d2&bsft_pp=3D1&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft=
+_mime_type=3Dhtml&bsft_tv=3D10&bsft_lx=3D6" style=3D"border: 1px solid #00F=
+F84; font-family:'GTWalsheimPro',Helvetica, Arial, sans-serif;font-weight: =
+bold;font-size: 13px; line-height: 18px; text-decoration: none; padding: 5p=
+x 16px; color: #00FF84; display: block; border-radius: 4px;text-align:cente=
+r;">Learn More</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <!-- Button : END -=
+->
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <!-- Column : END -->
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table role=3D"presentation" cellspacing=3D=
+"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                    <tr>
+                                        <!-- Column : BEGIN -->
+                                        <td valign=3D"top" width=3D"295" cl=
+ass=3D"stack-column">
+                                            <table role=3D"presentation" ce=
+llspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                                <tr>
+                                                    <td width=3D"100%" styl=
+e=3D"padding-bottom:20px;">
+                                                      <a href=3D"https://cl=
+ick.skillshare.com/z/hmdmb96z8?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&m=
+id=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&bsft_pp=3D2&bsft_ek=3D2021-07-25T=
+14%3A01%3A27Z&bsft_mime_type=3Dhtml&bsft_tv=3D10&bsft_lx=3D7">
+                                                        <img src=3D"https:/=
+/static.skillshare.com/uploads/video/thumbnails/fe5cfbafe7dd19e1b7a6626d3ad=
+6488d/448-252" width=3D"295" height=3D"auto" alt=3D"Discovering Success: 7 =
+Exercises to Uncover Your Purpose, Passion & Path" border=3D"0" style=3D"wi=
+dth:295px;max-width:295px;height:auto;display:block;" class=3D"r-img">
+                                                      </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <!-- Column : END -->
+                                        <!-- Column : BEGIN -->
+                                        <td valign=3D"top" width=3D"220" cl=
+ass=3D"stack-column-alt mobile-padding">
+                                            <table role=3D"presentation" ce=
+llspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                                <tr>
+                                                    <td width=3D"100%" styl=
+e=3D"font-size:18px;line-height:20px;font-family:'GTWalsheimPro',Helvetica,=
+ Arial, sans-serif;font-weight:bold;color:#FFFFFF;padding-bottom:10px;">Dis=
+covering Success: 7 Exercises to Uncover Your Purpose, Passion & Path</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width=3D"100%">
+                                                        <table role=3D"pres=
+entation" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                                            <tr>
+                                                                <td style=
+=3D"font-size:16px;line-height:20px;font-family:'GTWalsheimPro',Helvetica, =
+Arial, sans-serif;color:#FFFFFF;padding-left:0px;">Emma Gannon</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width=3D"100%" styl=
+e=3D"padding-bottom:24px;padding-top:24px;">
+                                                        <!-- Button : BEGIN=
+ -->
+                                                        <table align=3D"lef=
+t" role=3D"presentation" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+                                                            <tr>
+                                                                <td align=
+=3D"left" class=3D"button-td button-td-primary-bgreen" style=3D"border-radi=
+us: 4px;text-align: left;">
+                                                                    <a clas=
+s=3D"button-a button-a-primary-bgreen" href=3D"https://click.skillshare.com=
+/z/hmdmb96z8?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25=
+-47df-9d64-6607ec0220d2&bsft_pp=3D2&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft=
+_mime_type=3Dhtml&bsft_tv=3D10&bsft_lx=3D8" style=3D"border: 1px solid #00F=
+F84; font-family:'GTWalsheimPro',Helvetica, Arial, sans-serif;font-weight: =
+bold;font-size: 13px; line-height: 18px; text-decoration: none; padding: 5p=
+x 16px; color: #00FF84; display: block; border-radius: 4px;text-align:cente=
+r;">Learn More</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <!-- Button : END -=
+->
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <!-- Column : END -->
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <table role=3D"presentation" cellspacing=3D=
+"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                    <tr>
+                                        <!-- Column : BEGIN -->
+                                        <td valign=3D"top" width=3D"295" cl=
+ass=3D"stack-column">
+                                            <table role=3D"presentation" ce=
+llspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                                <tr>
+                                                    <td width=3D"100%" styl=
+e=3D"padding-bottom:20px;">
+                                                      <a href=3D"https://cl=
+ick.skillshare.com/z/3avdzmflj?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&m=
+id=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&bsft_pp=3D3&bsft_ek=3D2021-07-25T=
+14%3A01%3A27Z&bsft_mime_type=3Dhtml&bsft_tv=3D10&bsft_lx=3D9">
+                                                        <img src=3D"https:/=
+/static.skillshare.com/uploads/video/thumbnails/4ada6b4560fe12d60f68bca3029=
+4f36a/448-252" width=3D"295" height=3D"auto" alt=3D"Art Journaling for Self=
+-Care: 3 Exercises for Reflection and Growth" border=3D"0" style=3D"width:2=
+95px;max-width:295px;height:auto;display:block;" class=3D"r-img">
+                                                      </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <!-- Column : END -->
+                                        <!-- Column : BEGIN -->
+                                        <td valign=3D"top" width=3D"220" cl=
+ass=3D"stack-column-alt mobile-padding">
+                                            <table role=3D"presentation" ce=
+llspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                                <tr>
+                                                    <td width=3D"100%" styl=
+e=3D"font-size:18px;line-height:20px;font-family:'GTWalsheimPro',Helvetica,=
+ Arial, sans-serif;font-weight:bold;color:#FFFFFF;padding-bottom:10px;">Art=
+ Journaling for Self-Care: 3 Exercises for Reflection and Growth</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width=3D"100%">
+                                                        <table role=3D"pres=
+entation" cellspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                                            <tr>
+
+                                                                <td style=
+=3D"font-size:16px;line-height:20px;font-family:'GTWalsheimPro',Helvetica, =
+Arial, sans-serif;color:#FFFFFF;padding-left:0px;">Amanda Rach Lee</td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width=3D"100%" styl=
+e=3D"padding-bottom:24px;padding-top:24px;">
+                                                        <!-- Button : BEGIN=
+ -->
+                                                        <table align=3D"lef=
+t" role=3D"presentation" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+                                                            <tr>
+                                                                <td align=
+=3D"left" class=3D"button-td button-td-primary-bgreen" style=3D"border-radi=
+us: 4px;text-align: left;">
+                                                                    <a clas=
+s=3D"button-a button-a-primary-bgreen" href=3D"https://click.skillshare.com=
+/z/3avdzmflj?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25=
+-47df-9d64-6607ec0220d2&bsft_pp=3D3&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft=
+_mime_type=3Dhtml&bsft_tv=3D10&bsft_lx=3D10" style=3D"border: 1px solid #00=
+FF84; font-family:'GTWalsheimPro',Helvetica, Arial, sans-serif;font-weight:=
+ bold;font-size: 13px; line-height: 18px; text-decoration: none; padding: 5=
+px 16px; color: #00FF84; display: block; border-radius: 4px;text-align:cent=
+er;">Learn More</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <!-- Button : END -=
+->
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <!-- Column : END -->
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                     </table>
+                </td>
+            </tr>
+            <!-- Button : BEGIN -->
+            <tr>
+                <td width=3D"100%" style=3D"padding-top:16px;padding-bottom=
+:32px;background-color:#3724CB;" align=3D"center">
+                    <table role=3D"presentation" cellspacing=3D"0" cellpadd=
+ing=3D"0" border=3D"0" align=3D"center">
+                        <tr>
+                            <td align=3D"center" class=3D"button-td button-=
+td-primary-bgreen" style=3D"background-color:#FFFFFF;border-radius: 4px;">
+                                <a class=3D"button-a button-a-primary-bgree=
+n" href=3D"https://click.skillshare.com/z/ep89fjvna?uid=3D42c7a068-ecd7-476=
+9-9dc4-80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&bsft_ek=3D20=
+21-07-25T14%3A01%3A27Z&bsft_mime_type=3Dhtml&bsft_tv=3D10&bsft_lx=3D11" sty=
+le=3D"border: 1px solid #3724CB; font-family:'GTWalsheimPro',Helvetica, Ari=
+al, sans-serif;font-weight:bold;font-size:18px; line-height: 18px; text-dec=
+oration: none; padding: 12px 62px; color: #3724CB; display: block; border-r=
+adius: 4px;text-align:center;">Browse More Classes</a>
+                            </td>
+                        </tr>
+                    </table>=20=20
+                </td>
+            </tr>
+            <!-- Button : END -->
+            <!-- Col: END -->
+
+            <!-- 2 Col Intro : BEGIN -->
+            <tr>
+                <td width=3D"100%" align=3D"center">
+                    <table role=3D"presentation" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%">
+                        <tr>
+                            <td width=3D"100%">
+                                <table role=3D"presentation" cellspacing=3D=
+"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                    <tr>
+                                        <!-- Column : BEGIN -->
+                                        <td valign=3D"top" width=3D"208" cl=
+ass=3D"stack-column-alt" style=3D"padding-left:53px;padding-right:49px;back=
+ground-color:#00FF84;">
+                                            <table role=3D"presentation" ce=
+llspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                                <tr>
+                                                    <td style=3D"font-size:=
+14px;color:#002333;font-family:'GTWalsheimPro',Helvetica, Arial, sans-serif=
+;font-weight: bold;padding-top:51px;padding-bottom: 8px;">=20
+                                                        BLOG
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td align=3D"left" styl=
+e=3D"font-family:'GTWalsheimPro', Helvetica, Arial, sans-serif;font-weight:=
+bold;font-size:36px;line-height:36px;padding-bottom:15px;color:#002333;">Ho=
+w to Kindle Creative Inspiration</td>
+                                                </tr>
+                                                <tr>
+                                                    <td width=3D"100%" styl=
+e=3D"padding-bottom:30px;">
+                                                        <!-- Button : BEGIN=
+ -->
+                                                        <table align=3D"lef=
+t" role=3D"presentation" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+                                                            <tr>
+                                                                <td align=
+=3D"left" style=3D"text-align: left;">
+                                                                    <a href=
+=3D"https://click.skillshare.com/z/4q56x65yj?uid=3D42c7a068-ecd7-4769-9dc4-=
+80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&bsft_ek=3D2021-07-2=
+5T14%3A01%3A27Z&bsft_mime_type=3Dhtml&bsft_tv=3D10&bsft_lx=3D12" style=3D"f=
+ont-family:'GTWalsheimPro',Helvetica, Arial, sans-serif;font-size:18px; lin=
+e-height: 18px; text-decoration: none; padding: 12px 16px 12px 0; color: #3=
+722D3; display: block;text-align:left;">Learn More &rsaquo;</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <!-- Button : END -=
+->
+                                                    </td>
+                                                </tr>=20=20=20
+                                            </table>
+                                        </td>
+                                        <!-- Column : END -->
+                                        <!-- Column : BEGIN -->
+                                        <td valign=3D"top" width=3D"390" cl=
+ass=3D"stack-column">
+                                            <table role=3D"presentation" ce=
+llspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                                <tr>
+                                                    <td width=3D"100%" alig=
+n=3D"right">
+                                                      <a href=3D"https://cl=
+ick.skillshare.com/z/t9axfsq4g?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&m=
+id=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&bsft_ek=3D2021-07-25T14%3A01%3A27=
+Z&bsft_mime_type=3Dhtml&bsft_tv=3D10&bsft_lx=3D13">
+                                                        <img src=3D"https:/=
+/cdn.getblueshift.com/pictures/90076/content/q32021-campaign-blog.jpg" widt=
+h=3D"390" height=3D"auto" alt=3D"Finding inspiration doesn't have to be hea=
+rd. Read about tips and tricks to spark your creativity" border=3D"0" style=
+=3D"width:100%;max-width:390px;height:auto;display:block;" class=3D"r-img">
+                                                      </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <!-- Column : END -->
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                     </table>
+                </td>
+            </tr>
+            <!-- 2 Col Intro : END -->
+
+            <!-- 1 Col : END -->
+            <tr>
+                <td align=3D"center" style=3D"background-color:#FFFFFF;padd=
+ing-left:53px;padding-right:53px;" class=3D"section-wrap-26">
+                    <table role=3D"presentation" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%">
+                        <tr>
+                            <td align=3D"left" style=3D"font-family:'GTWals=
+heimPro', Helvetica, Arial, sans-serif;font-weight:bold;font-size:34px;line=
+-height:36px;color:#002333;padding-top:30px;padding-bottom:16px;" class=3D"=
+custom04">Guess what, you=E2=80=99re creative.</td>
+                        </tr>=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20
+                     </table>
+                </td>
+            </tr>
+
+            <!-- 1 Col : BEGIN -->
+            <tr>
+                <td width=3D"100%" style=3D"padding:0;">
+                  <a href=3D"https://click.skillshare.com/z/0uost6ck6?uid=
+=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607e=
+c0220d2&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mime_type=3Dhtml&bsft_tv=3D=
+10&bsft_lx=3D14">
+                    <img src=3D"https://cdn.getblueshift.com/pictures/90078=
+/content/q32021-campaign-video-01.jpg" width=3D"700" height=3D"auto" alt=3D=
+"Watch now to get inspired" border=3D"0" style=3D"width: 100%; max-width: 7=
+00px; height: auto;margin: auto; display: block;" class=3D"g-img">
+                  </a>
+                </td>
+            </tr>
+            <!-- Image, Flush : END -->
+
+            <!-- 2 Col : BEGIN -->
+            <tr>
+                <td width=3D"100%" align=3D"center" style=3D"background-col=
+or:#FF587B;padding-bottom:18px;">
+                    <table role=3D"presentation" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%">
+                        <tr>
+                            <td width=3D"100%">
+                                <table role=3D"presentation" cellspacing=3D=
+"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                    <tr>
+                                        <!-- Column : BEGIN -->
+                                        <td valign=3D"top" width=3D"300" cl=
+ass=3D"stack-column-alt section-wrap-12" style=3D"padding-top:40px;padding-=
+left:53px;">
+                                            <table role=3D"presentation" ce=
+llspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                                <tr>
+                                                    <td style=3D"font-size:=
+18px;line-height:24px;color:#FFFFFF;font-family:'GTWalsheimPro',Helvetica, =
+Arial, sans-serif;padding-top:8px;padding-bottom:18px;">=20
+                                                        Check out Skillshar=
+e=E2=80=99s newest brand video about human creativity. And remember, whethe=
+r you=E2=80=99re a dabbler or a pro, a hobbyist or master, you are creative.
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width=3D"100%" styl=
+e=3D"padding-bottom:30px;">
+                                                        <!-- Button : BEGIN=
+ -->
+                                                        <table align=3D"lef=
+t" role=3D"presentation" cellspacing=3D"0" cellpadding=3D"0" border=3D"0">
+                                                            <tr>
+                                                                <td align=
+=3D"left" class=3D"button-td button-td-primary-bgreen" style=3D"border-radi=
+us: 4px;background-color:#00FF84;text-align: left;">
+                                                                    <a clas=
+s=3D"button-a button-a-primary-bgreen" href=3D"https://click.skillshare.com=
+/z/475krrjbr?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25=
+-47df-9d64-6607ec0220d2&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mime_type=
+=3Dhtml&bsft_tv=3D10&bsft_lx=3D15" style=3D"border: 1px solid #00FF84; font=
+-family:'GTWalsheimPro',Helvetica, Arial, sans-serif;font-weight:bold;font-=
+size:18px; line-height: 18px; text-decoration: none; padding: 12px 16px; co=
+lor: #002333; display: block; border-radius: 4px;text-align:center;">Watch =
+Now</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                        <!-- Button : END -=
+->
+                                                    </td>
+                                                </tr>=20=20=20
+                                            </table>
+                                        </td>
+                                        <!-- Column : END -->
+                                        <!-- Column : BEGIN -->
+                                        <td valign=3D"top" width=3D"347" cl=
+ass=3D"stack-column">
+                                            <table role=3D"presentation" ce=
+llspacing=3D"0" cellpadding=3D"0" border=3D"0" width=3D"100%">
+                                                <tr>
+                                                    <td width=3D"100%" alig=
+n=3D"right" style=3D"padding-top: 13px;">
+                                                      <a href=3D"https://cl=
+ick.skillshare.com/z/6me6hkmab?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&m=
+id=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&bsft_ek=3D2021-07-25T14%3A01%3A27=
+Z&bsft_mime_type=3Dhtml&bsft_tv=3D10&bsft_lx=3D16">
+                                                        <img src=3D"https:/=
+/cdn.getblueshift.com/pictures/90077/content/q32021-campaign-hero-02.jpg" w=
+idth=3D"347" height=3D"auto" alt=3D"Watch now to get inspired" border=3D"0"=
+ style=3D"width:100%;max-width:347px;height:auto;display:block;" class=3D"r=
+-img">
+                                                      </a>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <!-- Column : END -->
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                     </table>
+                </td>
+            </tr>
+            <!-- 2 Col: END -->
+ <!-- Col : BEGIN -->
+            <tr>
+                <td align=3D"center" style=3D"padding-left:50px;padding-rig=
+ht:50px;background-color:#FF587B;padding-bottom:32px;padding-top: 32px;" cl=
+ass=3D"section-wrap">
+                    <table role=3D"presentation" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" width=3D"100%">
+                        <tr>
+                            <td align=3D"center" style=3D"font-family:'GTWa=
+lsheimPro', Helvetica, Arial, sans-serif !important;font-size:10px;line-hei=
+ght:14px;color:#ffffff;">Photo by Kevin Kim.
+</td>
+                        </tr>=20=20=20=20=20=20=20=20=20=20=20=20=20=20=20=
+=20=20=20=20=20=20=20=20=20=20
+                     </table>
+                </td>
+            </tr>
+            <!-- Col : END -->
+
+            <!-- Footer : BEGIN -->
+			<!-- Footer : BEGIN -->
+<tr>
+    <td width=3D"100%" align=3D"center" valign=3D"top" style=3D"padding: 32=
+px 60px;background-color:#002333;" class=3D"mobile-padding">
+        <table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" align=3D"center" style=3D"max-width: 700px;">
+                <tr>
+                    <td width=3D"100%">
+                        <table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0">
+                            <tr>
+                                <td valign=3D"top" width=3D"50%" align=3D"l=
+eft" style=3D"text-align: left !important;padding-bottom:16px 0 !important;=
+">
+                                    <a href=3D"https://click.skillshare.com=
+/z/1atqz2d88?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25=
+-47df-9d64-6607ec0220d2&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mime_type=
+=3Dhtml&bsft_tv=3D10&bsft_lx=3D17"><img src=3D"https://cdn.getblueshift.com=
+/pictures/44195/content/ss-logo-wht.png" width=3D"111"></a>
+                                    <table border=3D"0" cellpadding=3D"0" c=
+ellspacing=3D"0" style=3D"width:142px !important;margin:0 !important;">
+                                        <tr>
+                                            <td style=3D"padding-top:16px;p=
+adding-bottom:16px;padding-right:22px;"><a href=3D"https://click.skillshare=
+.com/z/9vp6apql4?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-=
+5f25-47df-9d64-6607ec0220d2&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mime_ty=
+pe=3Dhtml&bsft_tv=3D10&bsft_lx=3D18"><img src=3D"https://cdn.getblueshift.c=
+om/pictures/44196/content/facebook-color.png" alt=3D"Skillshare on Facebook=
+" width=3D"22"></a></td>
+                                            <td style=3D"padding-top:16px;p=
+adding-bottom:16px;padding-right:22px;"><a href=3D"https://click.skillshare=
+.com/z/r2de0silw?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-=
+5f25-47df-9d64-6607ec0220d2&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mime_ty=
+pe=3Dhtml&bsft_tv=3D10&bsft_lx=3D19"><img src=3D"https://cdn.getblueshift.c=
+om/pictures/44197/content/twitter-color.png" alt=3D"Skillshare on Twitter" =
+width=3D"22"></a></td>
+                                            <td style=3D"padding-top:16px;p=
+adding-bottom:16px;padding-right:22px;"><a href=3D"https://click.skillshare=
+.com/z/hp4x2t8vj?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-=
+5f25-47df-9d64-6607ec0220d2&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mime_ty=
+pe=3Dhtml&bsft_tv=3D10&bsft_lx=3D20"><img src=3D"https://cdn.getblueshift.c=
+om/pictures/44198/content/instagram-color.png" alt=3D"Skillshare on Instagr=
+am" width=3D"22"></a></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td valign=3D"bottom" width=3D"50%" align=
+=3D"right" style=3D"vertical-align:bottom;padding-bottom: 4px;">
+                                    <table width=3D"100%" cellpadding=3D"0"=
+ cellspacing=3D"0" border=3D"0">
+                                        <tr>
+                                            <td width=3D"100%" align=3D"rig=
+ht" style=3D""><a href=3D"https://click.skillshare.com/z/ev0rzzrbu?uid=3D42=
+c7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220=
+d2&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mime_type=3Dhtml&bsft_tv=3D10&bs=
+ft_lx=3D21"><img src=3D"https://cdn.getblueshift.com/pictures/44199/content=
+/appstore.png" alt=3D"Appstore" width=3D"112"></a></td>
+                                        </tr>
+                                        <tr>
+                                             <td width=3D"100%" align=3D"ri=
+ght" style=3D"padding-top:12px !important;"><a href=3D"https://click.skills=
+hare.com/z/honv9418w?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5a=
+e34-5f25-47df-9d64-6607ec0220d2&bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_mim=
+e_type=3Dhtml&bsft_tv=3D10&bsft_lx=3D22"><img src=3D"https://cdn.getblueshi=
+ft.com/pictures/44200/content/google-play.png" alt=3D"Google Play" width=3D=
+"112"></a></td>
+                                        </tr>
+                                    </table>=20
+                                </td>
+                            </tr>
+                        </table>=20
+                    </td>
+                </tr>
+                <tr>
+                    <td valign=3D"middle" style=3D"font-family:'GTWalsheimP=
+roBold', Helvetica, Arial, sans-serif;font-size: 12px;color:#FFFFFF;">
+                        215 Park Avenue South, 11th Floor<br> New York, NY =
+10003
+                    </td>
+                </tr>
+
+                <tr>
+                    <td width=3D"100%" valign=3D"top">
+                        <table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0">
+                            <tr>
+                                <td align=3D"left" style=3D"font-family: Ar=
+ial, Helvetica, sans-serif;font-size:10px;line-height: 14px;color:#FFFFFF;p=
+adding-top:15px;">
+                                    Being creative can be exhausting.<br>So=
+ if you need a break, <a href=3D"https://click.skillshare.com/customer/emai=
+l_preferences?uid=3D42c7a068-ecd7-4769-9dc4-80d8a64be930&mid=3D30e5ae34-5f2=
+5-47df-9d64-6607ec0220d2&eid=3Dad8116ed-561a-4894-8624-423e9cdcc918&bsft_ek=
+=3D2021-07-25T14%3A01%3A27Z&bsft_aaid=3Dd5edc627-0f6f-46e0-b492-6ae0d9cbe64=
+a&bsft_mime_type=3Dhtml&bsft_tv=3D10&bsft_lx=3D23" style=3D"color:#00FF84;t=
+ext-decoration: none;">unsubscribe here.</a>
+                                </td>
+                            </tr>
+                        </table>=20
+                    </td>
+                </tr>
+        </table>
+    </td>
+</tr>
+<!-- Footer : END -->
+            <!-- Footer : END -->
+
+	    </table>
+	    <!-- Email Body : END -->
+
+    <!--[if mso | IE]>
+    </td>
+    </tr>
+    </table>
+    <![endif]-->
+    </center>
+<img src=3D"https://click.skillshare.com/track?uid=3D42c7a068-ecd7-4769-9dc=
+4-80d8a64be930&bsft_aaid=3Dd5edc627-0f6f-46e0-b492-6ae0d9cbe64a&eid=3Dad811=
+6ed-561a-4894-8624-423e9cdcc918&mid=3D30e5ae34-5f25-47df-9d64-6607ec0220d2&=
+bsft_ek=3D2021-07-25T14%3A01%3A27Z&bsft_tv=3D10&bsft_mime_type=3Dhtml&a=3Do=
+pen" border=3D"0" width=3D"1px" height=3D"1px" alt=3D"" style=3D"margin: 0 =
+!important; padding: 0 !important; border: 0 !important; height: 1px !impor=
+tant; width: 1px !important;" data-bsft-open-pixel=3D"">
+<img src=3D"http://email.skillshare.com/wf/open?upn=3D65wD020aDPKezygFB7OGl=
+DaU1bucHCefFNSGMRjBgIoVinWi2HHEc6UGJ4-2BzRKw4DTIXf1aty8FCdnhmVj0GgRAjxiCbH5=
+11oDncof8RRMBoUCSsXBOoCGlJUEEkQVdGJhECi9Bm9mPg7iNV23QHo5itCy6ZyBnrByQdpUXT2=
+aca5V2efQ3MBkTFwIl4UOfZx0x5QF-2Bk7B6amw5mwSvH8IJxB7ofJZOvrv8aeODjeQFCThAcfE=
+2GciLt9bPURmtLvxRJ2Mjm1lQFuLKph5SBTbSTtmM-2FDf8e4-2F9HCFAJ94u8-2FFbQc6W4aq3=
+7dBWoC7r30dbjjNnhl4cN0-2BJjjf7hj5De2EHyIy6I8DV6mzCU9SX0Kbw6IkUUw79uXg5JBu-2=
+BJ4EzygGap83Xyp9aynkPj952IIRCYQnUDcW9DXejYXugQvk7-2FjyfbFebW3THGbsZ8t7aQUhm=
+L0sy4o9XRVtcg1z0pO2zjiPydqsKF9woj8aDeo6AO2yeKqhbLmIy1M7BgxVS-2FPbgUAOyVZ1-2=
+F-2B9asF8ADImeGQci3eSs1iTCjP0Gj7gr7Jsa-2F4X3H0belV4hQvnTNgSAJWl4SM2gPX3jamd=
+UThN-2F81-2F7lh1r7ONmlOmit03Ki0h8LMA3P-2BNHCRbUxOyZfJ7wf-2FWmRVD-2FJpjNwntA=
+ddqqRk-2F8blyT5Vp5nsln3qf1DF9zcKLI329AjlEvEyWSjsAwYi8joMmd-2B8CATbEhR-2BpWs=
+eXJu1pXnquuRz-2B2jtCfs2RficA9-2B6xxnKs7HB8RnFFMdWucky7im9zYqhZOvzvI9vLiBgJH=
+tkXIKHym6ZhY3-2FtnBuPGpe7ClVSKC8-2Bvh24e66ylgKMaXRwd5XlZrJczwWeQR0U3gzAurkM=
+NqygbMp5IIKHjT3wh-2BUpYkD1OwSwEqGloLuo-2BXI8TFKZldQhK1-2B-2Bz-2FoDUc-2FwqHQ=
+CsjdT1ba5riTwfGuzCp1-2B-2BRkCvc0ti2kwzsbPgFYDwIFwQ-3D-3D" alt=3D"" width=3D=
+"1" height=3D"1" border=3D"0" style=3D"height:1px !important;width:1px !imp=
+ortant;border-width:0 !important;margin-top:0 !important;margin-bottom:0 !i=
+mportant;margin-right:0 !important;margin-left:0 !important;padding-top:0 !=
+important;padding-bottom:0 !important;padding-right:0 !important;padding-le=
+ft:0 !important;"/>
+</body>
+</html>
+
+--d67752cec15769cc96dc0d9be226b6c31f1625833f0a554e5c095714cea2--
