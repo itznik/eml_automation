@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "start:email": "node eml_categorizer.js",
-    "start:scraper": "node scraper.js"
+    "start:scraper": "node scraper.js",
+    "start:spider": "node spider.js"
   },
   "dependencies": {
     "@google/generative-ai": "^0.2.1",
