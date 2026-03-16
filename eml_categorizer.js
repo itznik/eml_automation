@@ -2,7 +2,6 @@ import { ImapFlow } from 'imapflow';
 import { simpleParser } from 'mailparser';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import fs from 'fs/promises';
-import { createWriteStream } from 'fs';
 import path from 'path';
 import 'dotenv/config';
 
@@ -10,9 +9,9 @@ import 'dotenv/config';
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-// Target parameters from guidelines
-const TARGET_LANGUAGES = ['Hebrew', 'Hindi', 'Indonesian', 'Malay', 'Thai'];
-const MAIN_CATEGORIES = ['High Impact', 'Transactions', 'News', 'Social', 'Promotional', 'Unknown'];
+// The specific categories you requested
+const TARGET_LANGUAGES = ['Hebrew', 'Hindi', 'Indonesian', 'Malay', 'Thai', 'English'];
+const MAIN_CATEGORIES = ['OTP', 'Scam', 'News', 'Promotion', 'Transaction', 'Bank', 'Ticket', 'Bookings', 'Unknown'];
 
 const client = new ImapFlow({
     host: process.env.IMAP_HOST,
@@ -27,27 +26,29 @@ const client = new ImapFlow({
 
 async function categorizeEmail(subject, from) {
     const prompt = `
-    You are a strict data categorization AI for a machine learning training project.
-    Analyze the email metadata and categorize it based on the strict guidelines below.
+    You are a strict data categorization AI for an email extraction project.
+    Analyze the email metadata and categorize it based strictly on the categories below.
     
     Sender: ${from}
     Subject: ${subject}
     
     Rules:
-    1. Identify the language. Must be one of: Hebrew, Hindi, Indonesian, Malay, Thai. If none, output "Other".
-    2. Identify the Main Category:
-       - High Impact: (Time-sensitive, OTPs, login verification, security, utility notices, travel updates)
-       - Transactions: (Order confirmations, receipts, invoices, shipping updates, bank statements)
-       - News: (Newsletters, press releases)
-       - Social: (Friend requests, social media mentions)
-       - Promotional: (Marketing, discounts, offers, "act fast" sales)
+    1. Identify the language.
+    2. Identify the Main Category. You MUST choose exactly ONE of the following:
+       - OTP (One-time passwords, verification codes, login alerts)
+       - Scam (Phishing, suspicious offers, fake alerts)
+       - News (Newsletters, press releases, daily updates)
+       - Promotion (Marketing, discounts, sales, offers)
+       - Transaction (Order confirmations, receipts, invoices, shipping)
+       - Bank (Account statements, balance updates, credit card notices)
+       - Ticket (Event tickets, movie tickets, entry passes)
+       - Bookings (Flight, hotel, train, or restaurant reservations)
     3. Return ONLY a valid JSON object. Do not include markdown formatting or backticks.
     
     Expected JSON format:
     {
-      "language": "Hindi",
-      "category": "Promotional",
-      "subCategory": "Discounts"
+      "language": "English",
+      "category": "Promotion"
     }`;
 
     try {
@@ -62,7 +63,7 @@ async function categorizeEmail(subject, from) {
         return JSON.parse(text);
     } catch (error) {
         console.error(`[AI Error] Failed to categorize: ${error.message}`);
-        return { language: "Unknown", category: "Unknown", subCategory: "Unknown" };
+        return { language: "Unknown", category: "Unknown" };
     }
 }
 
@@ -79,37 +80,29 @@ async function processInbox() {
     console.log('[IMAP] Connected securely to email server.');
 
     try {
-        // Point to All Mail so we don't miss emails hidden in Promotions or Updates
+        // Look at All Mail to catch everything
         let mailbox = await client.mailboxOpen('[Gmail]/All Mail');
-        console.log(`[IMAP] Mailbox opened. Total messages found in account: ${mailbox.exists}`);
+        console.log(`[IMAP] Mailbox opened. Total messages found: ${mailbox.exists}`);
 
-        // If the mailbox is literally empty, stop the script and warn the user
         if (mailbox.exists === 0) {
-            console.log('\n[WARNING] Your email account has 0 messages. You need to trigger some emails first!');
-            console.log('Action needed: Go sign up for a newsletter or create an account using this email address.\n');
+            console.log('\n[WARNING] No emails found to process.');
             return;
         }
 
         console.log('[IMAP] Fetching emails...');
 
-        // Fetch all UIDs to process
+        // Fetch all UIDs and their raw source
         const messages = client.fetch('1:*', { uid: true, source: true });
         
         for await (let msg of messages) {
             const uid = msg.uid;
             console.log(`\n[Processing] Email UID: ${uid}`);
 
-            // Memory Management: Save raw source stream directly to a temporary file
+            // The fix: msg.source is a Buffer, not a stream. Write it directly.
             const tempFilePath = path.join(process.cwd(), `temp_${uid}.eml`);
-            const writeStream = createWriteStream(tempFilePath);
-            
-            await new Promise((resolve, reject) => {
-                msg.source.pipe(writeStream);
-                msg.source.on('end', resolve);
-                msg.source.on('error', reject);
-            });
+            await fs.writeFile(tempFilePath, msg.source);
 
-            // Parse headers from the saved file to save RAM
+            // Parse headers from the saved file
             const emailContent = await fs.readFile(tempFilePath);
             const parsed = await simpleParser(emailContent);
             
@@ -122,20 +115,23 @@ async function processInbox() {
             const aiResult = await categorizeEmail(subject, from);
             console.log(`[Categorized] ${aiResult.language} -> ${aiResult.category}`);
 
-            // Validate against client requirements
-            let finalLang = TARGET_LANGUAGES.includes(aiResult.language) ? aiResult.language : 'Other';
+            // Validate against your requested categories
             let finalCat = MAIN_CATEGORIES.includes(aiResult.category) ? aiResult.category : 'Unknown';
+            let finalLang = aiResult.language || 'Unknown';
 
-            // Build final directory structure: ./output/Hindi/Promotional/
+            // Build final directory structure: ./output/English/Promotion/
             const finalDir = path.join(process.cwd(), 'output', finalLang, finalCat);
             await ensureDirectoryExists(finalDir);
 
-            // Move the temp file to the categorized folder
+            // Move the file to the categorized folder
             const finalFilePath = path.join(finalDir, `${uid}_${Date.now()}.eml`);
             await fs.rename(tempFilePath, finalFilePath);
             
             console.log(`[Saved] -> ${finalFilePath}`);
         }
+        
+        console.log('\n[SUCCESS] All emails have been downloaded and categorized!');
+
     } catch (err) {
         console.error('[System Error]', err);
     } finally {
