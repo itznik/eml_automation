@@ -9,9 +9,9 @@ import 'dotenv/config';
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-// The specific categories you requested
+// The highly targeted categories
 const TARGET_LANGUAGES = ['Hebrew', 'Hindi', 'Indonesian', 'Malay', 'Thai', 'English'];
-const MAIN_CATEGORIES = ['OTP', 'Scam', 'News', 'Promotion', 'Transaction', 'Bank', 'Ticket', 'Bookings', 'Unknown'];
+const MAIN_CATEGORIES = ['OTP', 'Shopping', 'Subscribe', 'Subscriptions', 'Jobs', 'Interview', 'Verification', 'Purchase', 'Booking'];
 
 const client = new ImapFlow({
     host: process.env.IMAP_HOST,
@@ -24,9 +24,13 @@ const client = new ImapFlow({
     logger: false 
 });
 
+// Helper for pausing execution to prevent API rate limits
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+// Core AI Categorization
 async function categorizeEmail(subject, from) {
     const prompt = `
-    You are a strict data categorization AI for an email extraction project.
+    You are a strict data categorization AI for a high-value email extraction project.
     Analyze the email metadata and categorize it based strictly on the categories below.
     
     Sender: ${from}
@@ -35,35 +39,46 @@ async function categorizeEmail(subject, from) {
     Rules:
     1. Identify the language.
     2. Identify the Main Category. You MUST choose exactly ONE of the following:
-       - OTP (One-time passwords, verification codes, login alerts)
-       - Scam (Phishing, suspicious offers, fake alerts)
-       - News (Newsletters, press releases, daily updates)
-       - Promotion (Marketing, discounts, sales, offers)
-       - Transaction (Order confirmations, receipts, invoices, shipping)
-       - Bank (Account statements, balance updates, credit card notices)
-       - Ticket (Event tickets, movie tickets, entry passes)
-       - Bookings (Flight, hotel, train, or restaurant reservations)
+       - OTP (Verification codes, one-time passwords, login alerts, security codes)
+       - Shopping (Order confirmations, receipts, invoices, delivery tracking, e-commerce)
+       - Subscribe (Initial newsletter signups, welcome emails, "verify your subscription")
+       - Subscriptions (Recurring billing, SaaS renewals, platform monthly subscriptions)
+       - Jobs (Application updates, job alerts, recruiter outreach, resume views)
+       - Interview (Interview invitations, scheduling links, assessment tasks)
+       - Ignore (If the email does not clearly fit into any of the high-value categories above)
     3. Return ONLY a valid JSON object. Do not include markdown formatting or backticks.
     
     Expected JSON format:
     {
       "language": "English",
-      "category": "Promotion"
+      "category": "Shopping"
     }`;
 
-    try {
-        const result = await model.generateContent(prompt);
-        let text = result.response.text().trim();
-        
-        // Clean markdown block if AI adds it
-        if (text.startsWith('```json')) {
-            text = text.replace(/```json/g, '').replace(/```/g, '').trim();
+    const result = await model.generateContent(prompt);
+    let text = result.response.text().trim();
+    
+    // Clean markdown block if AI adds it
+    if (text.startsWith('```json')) {
+        text = text.replace(/```json/g, '').replace(/```/g, '').trim();
+    }
+    
+    return JSON.parse(text);
+}
+
+// Bulletproof wrapper for the AI to handle rate limits/network drops safely
+async function categorizeWithRetry(subject, from, retries = 3) {
+    for (let i = 0; i < retries; i++) {
+        try {
+            return await categorizeEmail(subject, from);
+        } catch (error) {
+            console.log(`[AI Warning] Attempt ${i + 1} failed: ${error.message}`);
+            if (i === retries - 1) {
+                console.log(`[AI Error] Max retries reached for subject: "${subject}". Defaulting to Ignore.`);
+                return { language: "Unknown", category: "Ignore" };
+            }
+            // Exponential backoff: waits 2s, then 4s, etc., before trying again
+            await delay(2000 * (i + 1)); 
         }
-        
-        return JSON.parse(text);
-    } catch (error) {
-        console.error(`[AI Error] Failed to categorize: ${error.message}`);
-        return { language: "Unknown", category: "Unknown" };
     }
 }
 
@@ -80,7 +95,6 @@ async function processInbox() {
     console.log('[IMAP] Connected securely to email server.');
 
     try {
-        // Look at All Mail to catch everything
         let mailbox = await client.mailboxOpen('[Gmail]/All Mail');
         console.log(`[IMAP] Mailbox opened. Total messages found: ${mailbox.exists}`);
 
@@ -91,18 +105,18 @@ async function processInbox() {
 
         console.log('[IMAP] Fetching emails...');
 
-        // Fetch all UIDs and their raw source
         const messages = client.fetch('1:*', { uid: true, source: true });
         
         for await (let msg of messages) {
             const uid = msg.uid;
-            console.log(`\n[Processing] Email UID: ${uid}`);
+            console.log(`\n-----------------------------------`);
+            console.log(`[Processing] Email UID: ${uid}`);
 
-            // The fix: msg.source is a Buffer, not a stream. Write it directly.
+            // Write raw Buffer directly to avoid pipe stream crashes
             const tempFilePath = path.join(process.cwd(), `temp_${uid}.eml`);
             await fs.writeFile(tempFilePath, msg.source);
 
-            // Parse headers from the saved file
+            // Parse headers
             const emailContent = await fs.readFile(tempFilePath);
             const parsed = await simpleParser(emailContent);
             
@@ -111,26 +125,32 @@ async function processInbox() {
 
             console.log(`[Extracted] From: ${from} | Subject: ${subject}`);
 
-            // Ask Gemini for categorization
-            const aiResult = await categorizeEmail(subject, from);
+            // Call the bulletproof AI function
+            const aiResult = await categorizeWithRetry(subject, from);
             console.log(`[Categorized] ${aiResult.language} -> ${aiResult.category}`);
 
-            // Validate against your requested categories
-            let finalCat = MAIN_CATEGORIES.includes(aiResult.category) ? aiResult.category : 'Unknown';
+            // Strict Filtering Logic
+            let finalCat = MAIN_CATEGORIES.includes(aiResult.category) ? aiResult.category : 'Ignore';
+
+            if (finalCat === 'Ignore') {
+                console.log(`[Skipped] Unwanted category. Deleting temp file.`);
+                await fs.unlink(tempFilePath); // Free up space immediately
+                continue; // Move to the next email
+            }
+
             let finalLang = aiResult.language || 'Unknown';
 
-            // Build final directory structure: ./output/English/Promotion/
+            // Save only the high-value targets
             const finalDir = path.join(process.cwd(), 'output', finalLang, finalCat);
             await ensureDirectoryExists(finalDir);
 
-            // Move the file to the categorized folder
             const finalFilePath = path.join(finalDir, `${uid}_${Date.now()}.eml`);
             await fs.rename(tempFilePath, finalFilePath);
             
             console.log(`[Saved] -> ${finalFilePath}`);
         }
         
-        console.log('\n[SUCCESS] All emails have been downloaded and categorized!');
+        console.log('\n[SUCCESS] High-value email extraction complete!');
 
     } catch (err) {
         console.error('[System Error]', err);
