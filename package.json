@@ -1,0 +1,22 @@
+{
+  "name": "eml-data-collector",
+  "version": "1.0.0",
+  "description": "Automated EML fetcher, categorizer, and scraper",
+  "main": "eml_categorizer.js",
+  "type": "module",
+  "scripts": {
+    "start:email": "node eml_categorizer.js",
+    "start:scraper": "node scraper.js"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.2.1",
+    "axios": "^1.6.7",
+    "bullmq": "^5.4.2",
+    "cheerio": "^1.0.0-rc.12",
+    "dotenv": "^16.4.5",
+    "imapflow": "^1.0.160",
+    "ioredis": "^5.3.2",
+    "mailparser": "^3.6.9",
+    "playwright": "^1.42.1"
+  }
+}
