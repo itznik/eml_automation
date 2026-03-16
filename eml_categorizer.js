@@ -53,8 +53,11 @@ async function categorizeEmail(subject, from) {
     try {
         const result = await model.generateContent(prompt);
         let text = result.response.text().trim();
+        
         // Clean markdown block if AI adds it
-        if (text.startsWith('```json')) text = text.replace(/```json/g, '').replace(/```/g, '').trim();
+        if (text.startsWith('```json')) {
+            text = text.replace(/```json/g, '').replace(/```/g, '').trim();
+        }
         
         return JSON.parse(text);
     } catch (error) {
@@ -75,9 +78,20 @@ async function processInbox() {
     await client.connect();
     console.log('[IMAP] Connected securely to email server.');
 
-    // FIX: Using mailboxOpen instead of getMailboxLock
-    await client.mailboxOpen('INBOX');
     try {
+        // Point to All Mail so we don't miss emails hidden in Promotions or Updates
+        let mailbox = await client.mailboxOpen('[Gmail]/All Mail');
+        console.log(`[IMAP] Mailbox opened. Total messages found in account: ${mailbox.exists}`);
+
+        // If the mailbox is literally empty, stop the script and warn the user
+        if (mailbox.exists === 0) {
+            console.log('\n[WARNING] Your email account has 0 messages. You need to trigger some emails first!');
+            console.log('Action needed: Go sign up for a newsletter or create an account using this email address.\n');
+            return;
+        }
+
+        console.log('[IMAP] Fetching emails...');
+
         // Fetch all UIDs to process
         const messages = client.fetch('1:*', { uid: true, source: true });
         
@@ -125,7 +139,6 @@ async function processInbox() {
     } catch (err) {
         console.error('[System Error]', err);
     } finally {
-        // FIX: Removed lock.release(), ImapFlow handles closing the mailbox natively on logout
         await client.logout();
         console.log('[IMAP] Connection closed.');
     }
