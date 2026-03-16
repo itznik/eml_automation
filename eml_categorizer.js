@@ -84,7 +84,7 @@ async function categorizeWithRetry(subject, from, retries = 3) {
         try {
             const result = await model.generateContent(prompt);
             let text = result.response.text().trim();
-            if (text.startsWith('\`\`\`json')) text = text.replace(/\`\`\`json/g, '').replace(/\`\`\`/g, '').trim();
+            if (text.startsWith('```json')) text = text.replace(/```json/g, '').replace(/```/g, '').trim();
             return JSON.parse(text);
         } catch (error) {
             if (i === retries - 1) return { language: "Unknown", category: "Unknown" };
@@ -114,21 +114,30 @@ async function processInbox() {
             return;
         }
 
-        console.log('[IMAP] Fetching email headers (Fast Mode)...');
-
-        // Fetch ONLY the lightweight envelopes to save memory
+        console.log('[IMAP] Step 1: Scanning all email headers (Fast Mode)...');
+        
+        // Step 1: Collect all headers first without doing any other operations
+        const allHeaders = [];
         const messages = client.fetch('1:*', { uid: true, envelope: true });
         
         for await (let msg of messages) {
-            const uid = msg.uid;
-            const subject = msg.envelope.subject || 'No Subject';
-            const from = msg.envelope.from?.[0]?.address || 'Unknown Sender';
+            allHeaders.push({
+                uid: msg.uid,
+                subject: msg.envelope.subject || 'No Subject',
+                from: msg.envelope.from?.[0]?.address || 'Unknown Sender'
+            });
+        }
+        
+        console.log(`[IMAP] Step 1 Complete! Found ${allHeaders.length} emails.`);
+        console.log(`[IMAP] Step 2: Starting AI categorization and secure downloading...\n`);
 
-            console.log(`\n-----------------------------------`);
-            console.log(`[Analyzing] UID: ${uid} | From: ${from}`);
+        // Step 2: Now that the scan is done, loop through our saved list
+        for (const header of allHeaders) {
+            console.log(`-----------------------------------`);
+            console.log(`[Analyzing] UID: ${header.uid} | From: ${header.from}`);
 
             // Ask AI based ONLY on headers
-            const aiResult = await categorizeWithRetry(subject, from);
+            const aiResult = await categorizeWithRetry(header.subject, header.from);
             
             // Safety fallback: Ensure AI didn't hallucinate a category
             let finalCat = MAIN_CATEGORIES.includes(aiResult.category) ? aiResult.category : 'Unknown';
@@ -144,16 +153,20 @@ async function processInbox() {
             const finalDir = path.join(process.cwd(), 'output', finalLang, finalCat);
             await ensureDirectoryExists(finalDir);
 
-            const finalFilePath = path.join(finalDir, `${uid}_${Date.now()}.eml`);
+            const finalFilePath = path.join(finalDir, `${header.uid}_${Date.now()}.eml`);
             
-            // Safe, isolated fetch for just this one approved email
-            const fullMsg = await client.fetchOne(uid, { source: true }, { uid: true });
-            await fs.writeFile(finalFilePath, fullMsg.source);
+            // Safe, isolated fetch for just this one email
+            const fullMsg = await client.fetchOne(header.uid, { source: true }, { uid: true });
             
-            console.log(`[Saved] -> ${finalFilePath}`);
+            if (fullMsg && fullMsg.source) {
+                await fs.writeFile(finalFilePath, fullMsg.source);
+                console.log(`[Saved] -> ${finalFilePath}`);
+            } else {
+                console.log(`[Error] Could not download source for UID: ${header.uid}`);
+            }
         }
         
-        console.log('\n[SUCCESS] Pipeline complete! Your folders are properly segregated.');
+        console.log('\n[SUCCESS] Pipeline complete! All emails have been processed and saved.');
 
     } catch (err) {
         console.error('\n[System Error Details]:\n', err);
