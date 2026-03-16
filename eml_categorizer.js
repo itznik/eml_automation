@@ -75,7 +75,8 @@ async function processInbox() {
     await client.connect();
     console.log('[IMAP] Connected securely to email server.');
 
-    let lock = await client.getMailboxLock('INBOX');
+    // FIX: Using mailboxOpen instead of getMailboxLock
+    await client.mailboxOpen('INBOX');
     try {
         // Fetch all UIDs to process
         const messages = client.fetch('1:*', { uid: true, source: true });
@@ -124,7 +125,7 @@ async function processInbox() {
     } catch (err) {
         console.error('[System Error]', err);
     } finally {
-        lock.release();
+        // FIX: Removed lock.release(), ImapFlow handles closing the mailbox natively on logout
         await client.logout();
         console.log('[IMAP] Connection closed.');
     }
